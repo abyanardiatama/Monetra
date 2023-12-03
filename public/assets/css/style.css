@@ -1,0 +1,31 @@
+.color-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .color-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .color-point {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+  
+  /* Styling for the list items */
+  .color-list li {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  /* Additional styling for the color points */
+  .color-point {
+    display: inline-block;
+    border: 2px solid #fff; /* Add a white border for better visibility */
+  }
+  
+  

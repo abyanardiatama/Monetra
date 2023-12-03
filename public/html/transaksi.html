@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html
+  lang="en"
+  class="light-style layout-menu-fixed layout-compact"
+  dir="ltr"
+  data-theme="theme-default"
+  data-assets-path="../assets/"
+  data-template="vertical-menu-template-free">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Monetra | Transaksi</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css ">
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="../assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <!-- <link rel="stylesheet" href="../assets/css/demo.css" /> -->
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="../assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <!-- Page CSS -->
+
+    <!-- Helpers -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+  </head>
+
+  <body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+      <div class="layout-container">
+        <!-- Menu -->
+
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+          <div class="app-brand demo">
+            <a href="index.html" class="app-brand-link">
+              <img src="../assets/img/favicon/favicon-1.png" class="mt-3" style="max-height: 40px; width: auto;" />
+              <h5 class="app-brand-text demo menu-text fw-bold ms-2 mt-4 mb-1">Monetra</h5>
+            </a>
+
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+              <i class="bx bx-chevron-left bx-sm align-middle"></i>
+            </a>
+          </div>
+
+          <div class="menu-inner-shadow"></div>
+
+          <ul class="menu-inner py-1">
+            <!-- Dashboard -->
+            <li class="menu-item">
+              <a href="index.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-alt"></i>
+                <div data-i18n="Dashboard">Dashboard</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="transaksi.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-list-ul"></i>
+                <div data-i18n="Transaksi">Transaksi</div>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="login.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-log-out"></i>
+                <div data-i18n="Log Out">Log Out</div>
+              </a>
+            </li>
+          </ul>
+        </aside>
+        <!-- / Menu -->
+
+        <!-- Layout container -->
+        <div class="layout-page">
+          <!-- Navbar -->
+
+          <nav
+            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+            id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+
+
+                <!-- User -->
+                <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                  <a class="nav-link dropdown-toggle hide-arrow" href="profile.html">
+                    <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                  </a>
+                </li>
+                <!--/ User -->
+              </ul>
+            </div>
+          </nav>
+
+          <!-- / Navbar -->
+
+          <!-- Content wrapper -->
+          <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="py-3 mb-4"><span class="text-black fw-bold">Transaksi</h4>
+             
+              <!-- search filter --> 
+              <div class="d-flex">
+                <div class="navbar-nav align-items-center">
+                  <div class="nav-item d-flex align-items-center ">
+                    <div class="input-group mb-2 border rounded w-30">
+                      <input id="tablesearch" type="input" placeholder="Search.." aria-describedby="button-addon" class="form-control bg-white border-0">
+                      <div class="input-group-append border-0">
+                        <button id="button-addon" type="button" class="btn btn-link text-secondary mt-1"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                
+              <!--filter-->
+              <div class="mb-2 ms-2 input-group w-20">
+                <input type="text" class="form-control pb-2" placeholder="Filter" id="kt_daterangepicker_1"/>
+                <button type="button" class="btn btn-outline-secondary" id="filterButton">
+                  <span class="bi bi-funnel"></span>
+              </button>
+              </div>
+                <!--select-->
+                
+                <select class="ms-2 form-select w-20 mb-2">
+                  <option selected>Select</option>
+                  <option value="1">Pemasukan</option>
+                  <option value="2">Pengeluaran</option>
+                </select>
+              <!--Button Circle-->
+              <!-- <button type="button" class="btn btn-secondary btn-rounded btn-icon"><i class="fa fa-edit"></i></button> -->
+              <button style="background-color:#6B6F7B ; border-radius:50%; margin-left: auto; " type="button" class="btn btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <g clip-path="url(#clip0_707_435)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M16.9563 14.2625L21.9065 19.2127L16.9563 24.1629C16.7376 24.3817 16.4409 24.5046 16.1315 24.5047H12.8333C12.5239 24.5047 12.2272 24.3818 12.0084 24.163C11.7896 23.9442 11.6667 23.6475 11.6667 23.338V20.0375C11.6667 19.7281 11.7897 19.4314 12.0085 19.2127L16.9563 14.2625ZM19.8333 2.33337C20.422 2.33319 20.989 2.55551 21.4206 2.95579C21.8523 3.35606 22.1167 3.90469 22.1608 4.49171L22.1667 4.66671V9.35671C21.2853 9.18951 20.3772 9.22801 19.5131 9.46922C18.6491 9.71043 17.8523 10.1478 17.185 10.7474L16.9563 10.9632L10.3577 17.563C9.75789 18.1629 9.39637 18.9601 9.34033 19.8065L9.33217 20.0375V23.338C9.33226 23.6551 9.37544 23.9706 9.4605 24.276L9.5305 24.5H5.83333C5.24466 24.5002 4.67767 24.2779 4.24603 23.8776C3.81438 23.4774 3.54998 22.9287 3.50583 22.3417L3.5 22.1667V4.66671C3.49981 4.07803 3.72214 3.51105 4.12241 3.0794C4.52269 2.64776 5.07132 2.38336 5.65833 2.33921L5.83333 2.33337H19.8333ZM23.5562 12.6129C23.8812 12.9379 24.1391 13.3237 24.315 13.7484C24.491 14.1731 24.5815 14.6283 24.5815 15.088C24.5815 15.5476 24.491 16.0028 24.315 16.4275C24.1391 16.8522 23.8812 17.238 23.5562 17.563L18.6083 12.6117C19.2647 11.9556 20.1548 11.587 21.0828 11.587C22.0109 11.587 22.901 11.9556 23.5573 12.6117L23.5562 12.6129ZM12.8333 7.00004H8.16667C7.85725 7.00004 7.5605 7.12296 7.34171 7.34175C7.12292 7.56054 7 7.85729 7 8.16671C7 8.47613 7.12292 8.77287 7.34171 8.99166C7.5605 9.21046 7.85725 9.33337 8.16667 9.33337H12.8333C13.1428 9.33337 13.4395 9.21046 13.6583 8.99166C13.8771 8.77287 14 8.47613 14 8.16671C14 7.85729 13.8771 7.56054 13.6583 7.34175C13.4395 7.12296 13.1428 7.00004 12.8333 7.00004Z" fill="#9CFF2E"/></g><defs>
+                <clipPath id="clip0_707_435"><rect width="28" height="28" fill="white"/></clipPath></defs>
+                </svg></button>
+              <button style="background-color:#FDFF00 ; border-radius:50%; margin-left:10px;" type="button" class="btn btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 29" fill="none">
+                <path d="M14.2415 3.46524C14.4602 3.68402 14.583 3.98072 14.583 4.29007C14.583 4.59943 14.4602 4.89613 14.2415 5.11491L12.733 6.62341H14.5833C20.0106 6.62341 24.5 11.1127 24.5 16.5401C24.5 21.9674 20.0106 26.4567 14.5833 26.4567C9.15596 26.4567 4.66663 21.9674 4.66663 16.5401C4.66663 16.2307 4.78954 15.9339 5.00833 15.7151C5.22713 15.4963 5.52387 15.3734 5.83329 15.3734C6.14271 15.3734 6.43946 15.4963 6.65825 15.7151C6.87704 15.9339 6.99996 16.2307 6.99996 16.5401C6.99996 20.6794 10.444 24.1234 14.5833 24.1234C18.7226 24.1234 22.1666 20.6794 22.1666 16.5401C22.1666 12.4007 18.7226 8.95674 14.5833 8.95674H12.733L14.2415 10.4652C14.454 10.6853 14.5716 10.98 14.5689 11.2859C14.5663 11.5918 14.4436 11.8844 14.2272 12.1007C14.0109 12.317 13.7183 12.4397 13.4124 12.4424C13.1065 12.445 12.8118 12.3274 12.5918 12.1149L9.09179 8.61491C8.87308 8.39613 8.75021 8.09943 8.75021 7.79007C8.75021 7.48072 8.87308 7.18402 9.09179 6.96524L12.5918 3.46524C12.8106 3.24653 13.1073 3.12366 13.4166 3.12366C13.726 3.12366 14.0227 3.24653 14.2415 3.46524Z" fill="#404040"/>
+                </svg></button>
+              <button style="background-color:#FF495F ; border-radius:50%; margin-left:10px;" type="button" class="btn btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
+                <path d="M7.00004 22.9567C7.00004 23.5755 7.24587 24.169 7.68346 24.6066C8.12104 25.0442 8.71454 25.29 9.33337 25.29H18.6667C19.2855 25.29 19.879 25.0442 20.3166 24.6066C20.7542 24.169 21 23.5755 21 22.9567V8.95671H7.00004V22.9567ZM9.33337 11.29H18.6667V22.9567H9.33337V11.29ZM18.0834 5.45671L16.9167 4.29004H11.0834L9.91671 5.45671H5.83337V7.79004H22.1667V5.45671H18.0834Z" fill="#404040"/>
+              </svg></button>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#basicModal" style="background-color:#9CFF2E ; border-radius:50%; margin-left:10px;" type="button" class="btn btn-icon"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                <path d="M21.682 15.6362H15.8487V21.4695C15.8487 21.7789 15.7258 22.0757 15.507 22.2945C15.2882 22.5133 14.9915 22.6362 14.682 22.6362C14.3726 22.6362 14.0759 22.5133 13.8571 22.2945C13.6383 22.0757 13.5154 21.7789 13.5154 21.4695V15.6362H7.68205C7.37263 15.6362 7.07588 15.5133 6.85709 15.2945C6.6383 15.0757 6.51538 14.7789 6.51538 14.4695C6.51538 14.1601 6.6383 13.8634 6.85709 13.6446C7.07588 13.4258 7.37263 13.3029 7.68205 13.3029H13.5154V7.46952C13.5154 7.1601 13.6383 6.86336 13.8571 6.64456C14.0759 6.42577 14.3726 6.30286 14.682 6.30286C14.9915 6.30286 15.2882 6.42577 15.507 6.64456C15.7258 6.86336 15.8487 7.1601 15.8487 7.46952V13.3029H21.682C21.9915 13.3029 22.2882 13.4258 22.507 13.6446C22.7258 13.8634 22.8487 14.1601 22.8487 14.4695C22.8487 14.7789 22.7258 15.0757 22.507 15.2945C22.2882 15.5133 21.9915 15.6362 21.682 15.6362Z" fill="#404040"/>
+              </svg></button>
+              </div>
+
+              <!-- Modal Input Transaksi -->
+              <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel1">Form Transaksi</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="col">
+                        <div class="form-group mb-3">
+                          <label for="kategori" class="form-label">Kategori</label>
+                          <input type="text" id="kategori" class="form-control" placeholder="Masukan Kategori">
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="tanggal" class="form-label">Tanggal</label>
+                          <input type="date" id="tanggal" class="form-control" >
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="jumlah" class="form-label">Jumlah</label>
+                          <input type="number" id="jumlah" class="form-control" placeholder="Masukan Jumlah">
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="keterangan" class="form-label">Keterangan</label>
+                          <select class="form-select" id="keterangan" aria-label="Default select example">
+                            <option selected>Pilih</option>
+                            <option value="1">Pemasukan</option>
+                            <option value="2">Pengeluaran</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn" style="background-color: #FF495F;" data-bs-dismiss="modal">Batalkan</button>
+                      <button type="button" class="btn" style="background-color: #9CFF2E;">Simpan</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Basic Bootstrap Table -->
+              <div class="card">
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                      <tr>
+                        <td class="fw-bold">
+                          <input type="checkbox" class="me-2 check" id="checkAll"> Kategori 
+                        </td>
+                        <td class="fw-bold">Keterangan</td>
+                        <td class="fw-bold">Tanggal</td>
+                        <td class="fw-bold">Jumlah</td>
+                        <td class="fw-bold">Sisa Saldo</td>
+                      </tr>
+                    <tbody id="mytable" class="table-border-bottom-0">
+                      <tr>
+                        <td>
+                          <input type="checkbox" class="me-2 check" id="checkAll"> Makanan 
+                        </td>
+                        <td>Pengeluaran</td>
+                        <td>
+                          <ul class="list-unstyled m-0">
+                            <li>
+                              10/10/2023
+                            </li>
+                          </ul>
+                        </td>
+                        <td>$ 10</td>
+                        <td>$ 50</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="checkbox" class="me-2 check" id="checkAll"> Olahraga 
+                        </td>
+                        <td>Pengeluaran</td>
+                        <td>
+                          <ul class="list-unstyled m-0">
+                            <li>
+                              11/10/2023
+                            </li>
+                          </ul>
+                        </td>
+                        <td>$ 10</td>
+                        <td>$ 60</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <input type="checkbox" class="me-2 check" id="checkAll"> Top Up 
+                        </td>
+                        <td>Pemasukan</td>
+                        <td>
+                          <ul class="list-unstyled m-0">
+                            <li>
+                              12/10/2023
+                            </li>
+                          </ul>
+                        </td>
+                        <td>$ 10</td>
+                        <td>$ 70</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!--/ Basic Bootstrap Table -->
+
+              <hr class="my-5" />
+            </div>
+
+
+
+            <!-- Footer -->
+            <footer class="content-footer footer bg-footer-theme">
+              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                <div class="mb-2 mb-md-0">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  , made with ❤️ by
+                  <a>Monetra Team</a>
+                </div>
+              </div>
+            </footer>
+            <!-- / Footer -->
+
+            <div class="content-backdrop fade"></div>
+          </div>
+          <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+      </div>
+
+      <!-- Overlay -->
+      <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+
+    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="../assets/vendor/libs/popper/popper.js"></script>
+    <script src="../assets/vendor/js/bootstrap.js"></script>
+    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="../assets/vendor/js/menu.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+
+    <!-- Main JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Page JS -->
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </body>
+  <script>
+    $("#checkAll").click(function () {
+      $(".check").prop('checked', $(this).prop('checked'));
+  });
+
+    $(document).ready(function(){
+    $("#tablesearch").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#mytable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+
+  flatpickr('#kt_daterangepicker_1', {
+      mode: 'range',
+  });
+
+  </script>
+  
+</html>
