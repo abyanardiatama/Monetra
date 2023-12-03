@@ -8,7 +8,7 @@
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
         <!--=============== ICON TITLE ===============-->
-        <link rel="icon" href="{{ asset('assets/img/favicon/favicon-1.png') }}">
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.png') }}" />
         
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="{{ asset('sidebar/css/styles.css') }}">
@@ -40,7 +40,7 @@
             <div class="header">
                 <h1>Hi, {{ Auth::user()->name }}</h1>
                 <div class="header_img" onclick="toggleDropdown()">
-                    <img src="{{ asset('assets/img/avatars/1.png') }}" alt="">
+                    <img src="{{ asset('assets/img/avatars/profil.png') }}" alt="">
                     <div class="dropdown" id="dropdown">
                         <a href="/dashboard/settings"><i class='bx bxs-cog' style="margin-right: 10px"></i>Pengaturan</a>
                         <form action="/logout" method="POST" id="logoutForm">

@@ -27,7 +27,7 @@
     @csrf
     <div class="summary_container">
         <div class="card-search-container search_input">
-            <input type="text" class="search__input" placeholder="Cari Transaksi" name="search">
+            <input type="text" id="default-search" class="search__input" placeholder="Cari Transaksi" name="search">
         </div>
         <div class="card-search-button search_button">
             <button class="search__button" type="submit" id="button-addon2">Cari</button>
@@ -35,7 +35,7 @@
     </div>
 </form>
 <div class="table_responsive">
-    <table>
+    <table id="default-table">
         <tr>
             <th>No</th>
             <th>Tanggal</th>
@@ -60,9 +60,9 @@
                 <a href="javascript:void(0)" id="open-modalEditPengeluaran-{{ $transaksi->id }}" class="open-modal-edit" onclick="showModal('open-modalEditPengeluaran-{{ $transaksi->id }}', 'modal-containerEditPengeluaran-{{ $transaksi->id }}')">
                     <i class='bx bxs-edit-alt addButton' style="text-align: center; font-size: 24px"></i>
                 </a>
-                <div class="modal__container" id="modal-containerEditPengeluaran-{{ $transaksi->id }}">
+                <div class="modal__container" id="modal-containerEditPengeluaran-{{ $transaksi->id }}" >
                     <!-- Your modal content here -->
-                    <div class="modal__content">
+                    <div class="modal__content" style="top:0%">
                         <div class="modal__close close-modal" title="Close" id="close-modalEditPengeluaran-{{ $transaksi->id }}" onclick="closeModal('close-modalEditPengeluaran-{{ $transaksi->id }}', 'modal-containerEditPengeluaran-{{ $transaksi->id }}')">
                             <i class='bx bx-x' style="font-size: 25px"></i>
                         </div>
@@ -206,5 +206,31 @@
     function formatWithCommas(value) {
         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Search Bar
+        const searchBar = document.getElementById('default-search');
+        searchBar.addEventListener('input', searchTable);
+
+        function searchTable() {
+            const input = searchBar.value.toLowerCase();
+            const table = document.getElementById('default-table');
+            const rows = table.getElementsByTagName('tr');
+            // var noEventDataDiv = document.getElementById("no-event-data");
+
+            const hasResult = false;
+
+            for (var i = 0; i < rows.length; i++) {
+                var rowData = rows[i].textContent.toLowerCase();
+
+                if (rowData.includes(input)) {
+                    rows[i].style.display = "";
+                    hasResults = true;
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    });
 </script>
 @endsection

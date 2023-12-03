@@ -429,6 +429,7 @@ button{
         top: -20%;
         border-radius: 1.25rem;
       }
+    
 }
 @media (min-width: 768px) {
     .card-small{
@@ -437,15 +438,27 @@ button{
     .card-medium{
         width: 100%;
     }
+    .modal__content{
+        margin: auto;
+        width: 500px;
+        top: -20%;
+        border-radius: 1.25rem;
+      }
     
 }
 @media (min-width: 1140px) {
     .card-small{
-        width: 49%;
+        width: 32%;
     }
     .card-medium{
-        width: 100%;
+        width: 49%;
     }
+    .modal__content{
+        margin: auto;
+        width: 500px;
+        top: 0%;
+        border-radius: 1.25rem;
+      }
 }
 @media (min-width: 1400px) {
     .card-small{
