@@ -18,6 +18,14 @@
     </div>
 </form>
 
+@if (session('empty'))
+    <div class="session-empty">
+        <span><i class='bx bxs-error-circle' ></i>
+            {{ session('empty') }}
+        </span>
+    </div>
+@endif
+
 {{-- Tabel Saldo --}}
 <div class="table_responsive">
     <table id="default-table">
@@ -30,12 +38,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($data as $saldo)
+            @foreach ($saldo as $saldo)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $saldo['namaBulan'] }}</td>
-                <td>{{ $saldo['tahunPemasukan'] }}</td>
-                <td>{{ number_format($saldo['totalPemasukan'], 0, ',', '.') }}</td>
+                <td>{{ $saldo['bulan'] }}</td>
+                <td>{{ $saldo['tahun'] }}</td>
+                <td>{{ number_format($saldo['sisaSaldo'], 0, ',', '.') }}</td>
             </tr>
             @endforeach
         </tbody>

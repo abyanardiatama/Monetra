@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('saldos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('bulan');
+            $table->string('tahun');
+            $table->integer('sisaSaldo');
             $table->timestamps();
         });
     }

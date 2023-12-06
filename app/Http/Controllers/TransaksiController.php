@@ -18,26 +18,7 @@ class TransaksiController extends Controller
     public function index(Request $request)
     {   
         $transaksi = Transaksi::where('user_id', auth()->user()->id)->get();
-        // dd($transaksi);
-        // $transaksi = Transaksi::all();
         
-
-        $search = $request->search;
-        if($search){
-            // matchh to all column
-            $transaksi = Transaksi::where('user_id', auth()->user()->id)
-            ->orwhere('kategori', 'like', '%'.$search.'%')
-            ->orWhere('keterangan', 'like', '%'.$search.'%')
-            ->orWhere('tanggal', 'like', '%'.$search.'%')
-            ->orWhere('jumlahPemasukan', 'like', '%'.$search.'%')
-            ->orWhere('jumlahPengeluaran', 'like', '%'.$search.'%')
-            ->get();
-            if($transaksi->count() == 0){
-                $transaksi = Transaksi::orderBy('updated_at', 'desc')->paginate(10);
-                return redirect()->back()->with('error', 'Data tidak ditemukan');
-            }
-        }
-
         $kategoriPemasukan = Kategori::where('jenis', 'pemasukan')
         ->where('user_id', auth()->user()->id)->get();
         $kategoriPemasukanAll = Kategori::where('jenis', 'pemasukan')
@@ -49,6 +30,35 @@ class TransaksiController extends Controller
         $kategoriPengeluaranAll = Kategori::where('jenis', 'pengeluaran')
         ->where('user_id', null)->get();
         $kategoriPengeluaran = $kategoriPengeluaran->union($kategoriPengeluaranAll);
+        
+
+        $search = $request->search;
+        if($search){
+            // matchh to all column
+            $transaksi = Transaksi::where('user_id', auth()->user()->id)
+            ->where('keterangan', 'like', '%'.$search.'%')
+            ->orWhere('kategori', 'like', '%'.$search.'%')
+            ->orWhere('tanggal', 'like', '%'.$search.'%')
+            ->orWhere('jumlahPemasukan', 'like', '%'.$search.'%')
+            ->orWhere('jumlahPengeluaran', 'like', '%'.$search.'%')
+            ->get();
+            // dd($transaksi);
+            if($transaksi->count() == 0){
+                return redirect()->back()->with('empty', 'Transaksi tidak ditemukan');
+            }
+            else{
+                return view('dashboard.transaksi.index',
+                [
+                    'title' => 'Transaksi',
+                    'active' => 'transaksi',
+                    'transaksi' => $transaksi,
+                    'kategoriPemasukan' => $kategoriPemasukan,
+                    'kategoriPengeluaran' => $kategoriPengeluaran,
+                ]);
+            }
+        }
+
+        
         return view('dashboard.transaksi.index',
             [
                 'title' => 'Transaksi',

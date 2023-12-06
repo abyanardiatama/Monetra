@@ -13,8 +13,10 @@ use Carbon\Carbon;
 class DashboardController extends Controller
 {
     public function index(TotalPengeluaranChart $chart) {
-        $jumlahPengeluaran = Pengeluaran::where('user_id', auth()->user()->id)->sum('jumlahPengeluaran');
-        $jumlahPemasukan = Pemasukan::where('user_id', auth()->user()->id)->sum('jumlahPemasukan');
+        $jumlahPengeluaran = Pengeluaran::where('user_id', auth()->user()->id)
+        ->where('tanggal', 'like', '%'.date('Y-m').'%')->sum('jumlahPengeluaran');
+        $jumlahPemasukan = Pemasukan::where('user_id', auth()->user()->id)
+        ->where('tanggal', 'like', '%'.date('Y-m').'%')->sum('jumlahPemasukan');
         $totalSaldo = $jumlahPemasukan - $jumlahPengeluaran;
         
         $now = Carbon::now();

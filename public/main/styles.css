@@ -118,6 +118,16 @@ h3{
     transition: all .3s;
     /* transform: translateY(10%); */
 }
+.session-empty{
+    margin: 16px 0 16px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #6c757d;
+    padding: 16px;
+    border-radius: .5rem;
+    background-color: #dedfe0;
+    transition: all .3s;
+}
 .card-small{
     width: 32%;
     height: 100%;
@@ -270,10 +280,11 @@ button{
 .modal__button{
     background-color: yellowgreen;
     color: white;
-    font-size: 22px;
+    font-size: 18px;
     padding: 10px;
     border-radius: .5rem;
     margin-top: 10px;
+    padding: 10px 44px 10px 44px;
 }
 .modal__button-width{
     width: 90%;

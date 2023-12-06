@@ -53,7 +53,6 @@
         <h4 class="modal__title" style="margin-bottom: 10px">Tambah Kategori</h4>
         <form action="/dashboard/kategori" method="post">
             @csrf
-            @method('post')
             <div class="form-group">
                 <label for="nama" class="modal__description">Nama Kategori</label>
                 <input type="text" class="modal__input" id="nama" name="nama" placeholder="Nama Kategori">
@@ -72,6 +71,14 @@
         </form>
     </div>
 </div>
+
+@if (session('empty'))
+    <div class="session-empty">
+        <span><i class='bx bxs-error-circle' ></i>
+            {{ session('empty') }}
+        </span>
+    </div>
+@endif
 
 {{-- Tabel Kategori --}}
 <div class="table_responsive">
@@ -134,7 +141,7 @@
                                 <i class='bx bx-x' style="font-size: 25px"></i>
                             </div>
                             <h3 style="text-align: center; margin: 32px 0 0 0;">Yakin Menghapus Kategori ?</h3>
-                            <p style="text-align: center; margin: 0 0 32px 0;">Data dengan kategori ini juga akan ikut terhapus</p>
+                            <p style="text-align: center; margin: 0 0 32px 0;">Transaksi dengan kategori ini juga akan ikut terhapus</p>
                             <div class="flex justify-center" style="gap: 10px">
                                 <div>
                                     <button class="modal__button" style="background-color: gray" id="cancel-modalDeleteKategori-{{ $k->id }}" onclick="closeModal('cancel-modalDeleteKategori-{{ $k->id }}', 'modal-containerDeleteKategori-{{ $k->id }}')">No</button>

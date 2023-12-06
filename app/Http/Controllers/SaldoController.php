@@ -9,6 +9,7 @@ use App\Models\Pemasukan;
 use App\Models\Pengeluaran;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class SaldoController extends Controller
 {
@@ -17,45 +18,88 @@ class SaldoController extends Controller
      */
     public function index(Request $request)
     {   
-        $pemasukan = Pemasukan::where('user_id', auth()->user()->id)->get();
-        $pengeluaran = Pengeluaran::where('user_id', auth()->user()->id)->get();
-
-        //get total pemasukan from pemasukan for each month
-        $bulanPemasukan = [];
-        $tahunPemasukan = [];
-        $totalPemasukan = [];
-        foreach($pemasukan as $pemasukan){
-            $bulanPemasukan[] = date('m', strtotime($pemasukan->tanggal));
-            $tahunPemasukan[] = date('Y', strtotime($pemasukan->tanggal));
-            $tahunPemasukan = array_unique($tahunPemasukan);
-            $bulanPemasukan = array_unique($bulanPemasukan);
-        }
-        foreach($bulanPemasukan as $bulan){
-            $namaBulan[] = date('F', mktime(0, 0, 0, $bulan, 10));
-        }
-        foreach($bulanPemasukan as $bulan){
-            $totalPemasukan[] = Pemasukan::where('user_id', auth()->user()->id)
-            ->whereMonth('tanggal', $bulan)->sum('jumlahPemasukan');
-        }
-        //merge ($namaBulan, $tahunPemasukan, $totalPemasukan) into array based its id
-        // ex: $namaBulan[0] = January, $tahunPemasukan[0] = 2021, $totalPemasukan[0] = 1000000
-        // then $data[0] = ['namaBulan' => 'January', 'tahunPemasukan' => 2021, 'totalPemasukan' => 1000000]
-        $data = [];
-        foreach($namaBulan as $key => $value){
-            $data[] = [
-                'namaBulan' => $value,
-                'tahunPemasukan' => $tahunPemasukan[$key],
-                'totalPemasukan' => $totalPemasukan[$key],
-            ];
+        $transaksi = Transaksi::where('user_id', auth()->user()->id)->get();
+        // dd($transaksi);
+        if($transaksi == null){
+            return view('dashboard.saldo.index', [
+                'title' => 'Saldo',
+                'active' => 'saldo',
+                'data' => [],
+            ]);
         }
         
-        if($request->search){
+        $transaksiByMonth = $transaksi->groupBy(function ($transaksi) {
+            $tanggal = Carbon::parse($transaksi->tanggal);
+            return $tanggal->format('Y-m');
+        });
+        
+        // Calculate the saldo for each month
+        $saldoData = [];
+        foreach ($transaksiByMonth as $month => $transactions) {
+            $totalPemasukan = $transactions->sum('jumlahPemasukan');
+            $totalPengeluaran = $transactions->sum('jumlahPengeluaran');
+            $sisaSaldo = $totalPemasukan - $totalPengeluaran;
+
+            // Extract month and year from the grouped key
+            list($year, $month) = explode('-', $month);
+
+            // Use Carbon to format the month name based on the current locale
+            $formattedMonth = Carbon::createFromDate(null, $month, null)->translatedFormat('F');
+
+            // Check if saldo record already exists for the month
+            $saldo = Saldo::where('user_id', auth()->user()->id)
+                ->where('bulan', $formattedMonth)
+                ->where('tahun', $year)
+                ->first();
             
+            if ($saldo) {
+                // If saldo record exists, update it
+                $saldo->update(['sisaSaldo' => $sisaSaldo]);
+            } else {
+                // If saldo record doesn't exist, create a new one
+                $saldoData[] = [
+                    'user_id' => auth()->user()->id,
+                    'bulan' => $formattedMonth,
+                    'tahun' => $year,
+                    'sisaSaldo' => $sisaSaldo,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
         }
-        return view('dashboard.saldo.index',[
+
+        // Bulk insert new saldo records if any
+        Saldo::insert($saldoData);   
+
+        // Get the saldo data
+        $saldo = Saldo::where('user_id', auth()->user()->id)->get();
+        
+        // Search
+        $search = $request->search;
+        if($search){
+            // matchh to all column
+            $saldo = Saldo::where('user_id', auth()->user()->id)
+            ->Where('bulan', 'like', '%'.$search.'%')
+            ->orWhere('tahun', 'like', '%'.$search.'%')
+            ->orWhere('sisaSaldo', 'like', '%'.$search.'%')
+            ->get();
+            // dd($saldo, $search);
+            if($saldo->count() == 0){
+                return redirect()->back()->with('empty', 'Saldo tidak ditemukan');
+            }
+            else{
+                return view('dashboard.saldo.index', [
+                    'title' => 'Saldo',
+                    'active' => 'saldo',
+                    'saldo' => $saldo,
+                ]);
+            }
+        } 
+        
+        return view('dashboard.saldo.index', [
             'title' => 'Saldo',
             'active' => 'saldo',
-            'data' => $data,
+            'saldo' => $saldo,
         ]);
     }
 

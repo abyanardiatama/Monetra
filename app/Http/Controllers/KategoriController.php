@@ -19,27 +19,30 @@ class KategoriController extends Controller
      */
     public function index(Request $request)
     {   
-        //show kategori which user_id = null and user_id = auth()->user()->id
         $kategori = Kategori::where('user_id', auth()->user()->id);
         $kategoriAll = Kategori::where('user_id', null);
-        $kategori = $kategori->union($kategoriAll)->orderBy('updated_at', 'desc')->get();
-        // dd($kategori);
-        
-        // $kategori = Kategori::where('user_id', auth()->user()->id)
-        // ->orderBy('updated_at', 'desc')->paginate(10);
-        
+        $kategori = $kategori->union($kategoriAll)->orderBy('created_at', 'desc')->get();
+
         $search = $request->search;
         if($search){
-            $kategori = Kategori::where('nama', 'like', '%'.$search.'%')
-            ->orWhere('jenis', 'like', '%'.$search.'%')
-            ->paginate(10);
-            // dd($kategori->nama);
+            //find in $kategori
+            $kategori = $kategori->filter(function ($item) use ($search) {
+                return stripos($item['nama'], $search) !== false;
+            });
             if($kategori->count() == 0){
-                $kategori = Kategori::orderBy('updated_at', 'desc')->paginate(10);
-                return redirect()->back()->with('error', 'Data tidak ditemukan');
+                return redirect()->back()->with('empty', 'Kategori tidak ditemukan');
+            }
+            else{
+                return view('dashboard.kategori.index',
+                [
+                    'title' => 'Kategori',
+                    'active' => 'kategori',
+                    'kategori' => $kategori,
+                ]);
             }
         }
-        
+
+        // dd('masuk sini2');
         return view('dashboard.kategori.index',
             [
                 'title' => 'Kategori',

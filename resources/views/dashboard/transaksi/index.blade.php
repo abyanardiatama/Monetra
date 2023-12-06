@@ -34,6 +34,15 @@
         </div>
     </div>
 </form>
+
+@if (session('empty'))
+    <div class="session-empty">
+        <span><i class='bx bxs-error-circle' ></i>
+            {{ session('empty') }}
+        </span>
+    </div>
+@endif
+
 <div class="table_responsive">
     <table id="default-table">
         <tr>
