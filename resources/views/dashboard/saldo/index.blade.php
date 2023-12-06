@@ -3,7 +3,7 @@
 {{-- <link rel="stylesheet" href="../assets/vendor/css/core.css" class="template-customizer-core-css" /> --}}
 <link rel="stylesheet" href="{{ asset('main/styles.css') }}">
 @section('container')
-<h3>Saldo</h3>
+<h3>Rekap Saldo Bulanan</h3>
 
 {{-- Search --}}
 <form action="/dashboard/saldo" method="GET" style="margin-bottom: 20px">

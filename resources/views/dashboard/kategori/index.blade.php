@@ -6,7 +6,7 @@
         <div>
             <h3>Kategori</h3>
         </div>
-        <div style="padding: 32px 0 32px 13px">
+        <div style="padding: 32px 0 32px 10px">
             <a href="javascript:void(0)" id="open-modalAddKategori" onclick="showModal('open-modalAddKategori', 'modal-containerAddKategori')">
                 <i class='bx bxs-plus-circle addButton' style="font-size: 32px"></i>
             </a>

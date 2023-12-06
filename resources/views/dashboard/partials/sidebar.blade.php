@@ -39,6 +39,15 @@
                     logoutButton.addEventListener('click', function(e) {
                         logoutButton.removeAttribute('href');
                     });
+
+                    const navToggle = document.getElementById('nav-toggle');
+                    const nav = document.getElementById('nav');
+                    nav.addEventListener('click', function(e) {
+                        // add classlist
+                        nav.classList.toggle('show-menu');
+                        navToggle.classList.toggle('rotate-icon');
+                    });
+                    
                 </script>
             </form>
         </div>
