@@ -34,6 +34,10 @@ class LoginController extends Controller
             'email' => 'required|unique:users|email:rfc,dns',
             'password' => 'required|min:8',
         ]);
+        //if user exist
+        if(User::where('email', $validatedData['email'])->first()){
+            return redirect('/register')->with('error', 'Pengguna telah terdaftar!');
+        }
         $validatedData['password'] = bcrypt($validatedData['password']);
         User::create($validatedData);
         return redirect('/login')->with('success', 'Registrasi Sukses, silahkan login kembali!');

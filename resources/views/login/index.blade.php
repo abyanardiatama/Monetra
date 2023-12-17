@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-10">
             <div class="wrap d-md-flex">
-                <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last" style="border-radius: 0 20px 20px 0">
+                <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
                     <div class="text w-100">
                         <img src="{{ asset('assets/img/favicon/favicon.png') }}" class="mt-3" style="max-height: 70px; width: auto;" />				
                         <h2 style="color: rgb(255, 255, 255);">Monetra</h2>				
@@ -12,7 +12,7 @@
                         <a href="/register" class="btn btn-white btn-outline-white">Sign Up</a>
                     </div>
                 </div>
-                <div class="login-wrap p-4 p-lg-5" style="border-radius: 20px 0 0 20px">
+                <div class="login-wrap p-4 p-lg-5">
                     <div class="d-flex">
                         <div class="w-100">
                             <h3 class="mb-4">Sign In</h3>
